@@ -1,0 +1,597 @@
+/* ============================================================
+   RELIQUARY — A Sacred Archive
+   Jellyfin Theme by iBlankked
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+/* ── Variables ──────────────────────────────────────────── */
+:root {
+  --rq-void:        #070605;
+  --rq-deep:        #0c0a07;
+  --rq-surface:     #121008;
+  --rq-raised:      #1a160e;
+  --rq-border:      #2a2116;
+  --rq-border-dim:  #1c1810;
+  --rq-gold:        #c8a45a;
+  --rq-gold-dim:    #7a612e;
+  --rq-gold-pale:   #e8d5a0;
+  --rq-gold-glow:   rgba(200,164,90,0.08);
+  --rq-gold-rgb:    200,164,90;
+  --rq-cream:       #e0d2ba;
+  --rq-muted:       #6e6450;
+  --rq-faint:       #2e2818;
+  --rq-red:         #6b1515;
+  --accent:         200,164,90;
+  --rounding:       0px;
+  --font-display:   'Cinzel', 'Times New Roman', serif;
+  --font-body:      'Cormorant Garamond', 'Georgia', serif;
+  --font-read:      'EB Garamond', 'Georgia', serif;
+}
+
+/* ── Scrollbars ─────────────────────────────────────────── */
+* {
+  scrollbar-color: var(--rq-gold-dim) var(--rq-deep) !important;
+  scrollbar-width: thin !important;
+}
+::-webkit-scrollbar { width: 4px !important; height: 4px !important; }
+::-webkit-scrollbar-track { background: var(--rq-deep) !important; box-shadow: none !important; }
+::-webkit-scrollbar-track-piece { background-color: var(--rq-deep) !important; }
+::-webkit-scrollbar-thumb:horizontal,
+::-webkit-scrollbar-thumb:vertical {
+  background: var(--rq-gold-dim) !important;
+  border-radius: 0 !important;
+}
+
+/* ── Base ───────────────────────────────────────────────── */
+html, body {
+  background-color: var(--rq-void) !important;
+  font-family: var(--font-body) !important;
+  font-size: clamp(15px, 1.1vw, 20px) !important;
+  color: var(--rq-cream) !important;
+}
+
+html, .backgroundContainer, .dialog,
+.nowPlayingContextMenu, .nowPlayingPlaylist {
+  background-color: var(--rq-void) !important;
+}
+
+.backgroundContainer.withBackdrop {
+  background-color: rgba(7,6,5,0.94) !important;
+}
+
+.ui-corner-all, .ui-shadow, .wizardStartForm {
+  background-color: var(--rq-deep) !important;
+}
+
+/* ── Vignette atmosphere ────────────────────────────────── */
+.backgroundContainer::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.skinHeader, html { color: var(--rq-cream) !important; }
+
+.skinHeader-withBackground {
+  background-color: rgba(7,6,5,0.97) !important;
+  border-bottom: 1px solid var(--rq-border) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+.skinHeader.semiTransparent {
+  background-color: rgba(7,6,5,0.6) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.layout-tv .skinHeader.semiTransparent { background: none !important; }
+
+.pageTitleWithDefaultLogo {
+  background-image: url(../../banner-light.b113d4d1c6c07fcb73f0.png) !important;
+  filter: sepia(1) saturate(0.4) brightness(0.75) !important;
+}
+
+.layout-tv .pageTitleWithDefaultLogo {
+  background-image: url(../../icon-transparent.baba78f2a106d9baee83.png) !important;
+}
+
+/* Header nav buttons */
+.headerButton {
+  color: var(--rq-muted) !important;
+  transition: color 0.3s ease !important;
+}
+
+.headerButton:hover { color: var(--rq-gold) !important; }
+
+/* ── Sidebar ────────────────────────────────────────────── */
+.drawer-open, .mainDrawer {
+  background-color: var(--rq-deep) !important;
+  border-right: 1px solid var(--rq-border-dim) !important;
+}
+
+.navMenuOption {
+  font-family: var(--font-display) !important;
+  font-size: clamp(0.58rem, 0.68vw, 0.82rem) !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--rq-muted) !important;
+  transition: color 0.25s ease, padding-left 0.25s ease !important;
+}
+
+.navMenuOption:hover {
+  background: rgba(200,164,90,0.05) !important;
+  color: var(--rq-gold) !important;
+}
+
+.navMenuOption-selected {
+  background: transparent !important;
+  color: var(--rq-gold) !important;
+  border-left: 2px solid var(--rq-gold) !important;
+}
+
+/* ── Buttons ────────────────────────────────────────────── */
+.fab, .raised {
+  background: transparent !important;
+  color: var(--rq-cream) !important;
+  border: 1px solid var(--rq-border) !important;
+  font-family: var(--font-display) !important;
+  letter-spacing: 0.14em !important;
+  font-size: clamp(0.58rem, 0.65vw, 0.78rem) !important;
+  text-transform: uppercase !important;
+  border-radius: 0 !important;
+  transition: all 0.25s ease !important;
+}
+
+.fab:focus, .raised:focus {
+  background: var(--rq-gold-glow) !important;
+  border-color: var(--rq-gold-dim) !important;
+}
+
+.button-submit {
+  background: transparent !important;
+  color: var(--rq-gold) !important;
+  border: 1px solid var(--rq-gold-dim) !important;
+  font-family: var(--font-display) !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  border-radius: 0 !important;
+}
+
+.button-submit:focus {
+  background: var(--rq-gold-glow) !important;
+  color: var(--rq-gold-pale) !important;
+}
+
+.button-delete {
+  background: transparent !important;
+  color: #cb272a !important;
+  border: 1px solid var(--rq-red) !important;
+  border-radius: 0 !important;
+}
+
+/* ── Inputs ─────────────────────────────────────────────── */
+.emby-input, .emby-textarea {
+  background: var(--rq-surface) !important;
+  border: 0.16em solid var(--rq-border) !important;
+  border-radius: 0 !important;
+  color: var(--rq-cream) !important;
+  font-family: var(--font-body) !important;
+  font-size: 1rem !important;
+}
+
+.emby-input:focus, .emby-textarea:focus {
+  border-color: var(--rq-gold-dim) !important;
+}
+
+.emby-select-withcolor {
+  background: var(--rq-surface) !important;
+  border: 0.07em solid var(--rq-border) !important;
+  color: var(--rq-cream) !important;
+  border-radius: 0 !important;
+}
+
+.emby-select-withcolor > option {
+  background: var(--rq-deep) !important;
+  color: var(--rq-cream) !important;
+}
+
+.emby-select-withcolor:focus {
+  border-color: var(--rq-gold-dim) !important;
+}
+
+/* Labels */
+.inputLabel, .inputLabelUnfocused, .checkboxListLabel,
+.paperListLabel, .textareaLabelUnfocused {
+  color: var(--rq-muted) !important;
+  font-family: var(--font-display) !important;
+  font-size: clamp(0.55rem, 0.62vw, 0.72rem) !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.inputLabelFocused, .selectLabelFocused, .textareaLabelFocused {
+  color: var(--rq-gold) !important;
+}
+
+.checkboxLabel { color: inherit !important; }
+
+/* ── Cards ──────────────────────────────────────────────── */
+.defaultCardBackground1 { background-color: #1a1208 !important; }
+.defaultCardBackground2 { background-color: #231a0a !important; }
+.defaultCardBackground3 { background-color: #1c1508 !important; }
+.defaultCardBackground4 { background-color: #141008 !important; }
+.defaultCardBackground5 { background-color: #201808 !important; }
+
+.card { border-radius: 0 !important; }
+
+.cardBox {
+  border-radius: 0 !important;
+  transition: box-shadow 0.35s ease !important;
+}
+
+.card:focus .cardBox.visualCardBox,
+.card:focus .cardBox:not(.visualCardBox) .cardScalable {
+  border-color: var(--rq-gold-dim) !important;
+}
+
+.card:hover .cardBox {
+  box-shadow: 0 0 0 1px var(--rq-gold-dim), 0 12px 50px rgba(0,0,0,0.85) !important;
+}
+
+/* Sepia → color on hover */
+.cardImageContainer {
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  filter: sepia(0.65) brightness(0.88) !important;
+  transition: filter 0.5s ease !important;
+}
+
+.card:hover .cardImageContainer {
+  filter: sepia(0) brightness(1.0) !important;
+}
+
+/* Card overlay gradient */
+.cardOverlay {
+  background: linear-gradient(
+    0deg,
+    rgba(7,6,5,0.92) 0%,
+    rgba(7,6,5,0.3) 45%,
+    transparent 72%
+  ) !important;
+  transition: background 0.4s ease !important;
+}
+
+.card:hover .cardOverlay {
+  background: linear-gradient(
+    0deg,
+    rgba(7,6,5,0.65) 0%,
+    rgba(7,6,5,0.08) 45%,
+    transparent 72%
+  ) !important;
+}
+
+.cardOverlayContainer,
+.cardOverlayTarget {
+  background: transparent !important;
+}
+
+/* Card text */
+.cardText {
+  font-family: var(--font-display) !important;
+  font-size: clamp(0.52rem, 0.65vw, 0.78rem) !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--rq-cream) !important;
+}
+
+.cardText-secondary, .secondaryText,
+.fieldDescription, .guide-programNameCaret,
+.listItem .secondary, .nowPlayingBarSecondaryText,
+.programSecondaryTitle {
+  color: var(--rq-muted) !important;
+  font-family: var(--font-body) !important;
+  font-size: clamp(0.5rem, 0.58vw, 0.68rem) !important;
+}
+
+/* Category tile text */
+.overflowBackdropCard .cardText {
+  font-family: var(--font-display) !important;
+  font-size: clamp(0.75rem, 0.95vw, 1.2rem) !important;
+  letter-spacing: 0.22em !important;
+  font-weight: 600 !important;
+  text-shadow: 0 2px 20px rgba(0,0,0,1), 0 0 60px rgba(0,0,0,0.9) !important;
+}
+
+/* Progress bar */
+.itemProgressBar {
+  background: var(--rq-border) !important;
+  border-radius: 0 !important;
+  height: 2px !important;
+}
+
+.itemProgressBarForeground {
+  background-color: var(--rq-gold) !important;
+  border-radius: 0 !important;
+}
+
+/* Played/watched indicator */
+.countIndicator, .fullSyncIndicator,
+.mediaSourceIndicator, .playedIndicator {
+  background: var(--rq-gold-dim) !important;
+  border-radius: 0 !important;
+  color: var(--rq-void) !important;
+}
+
+.fullSyncIndicator { color: var(--rq-void) !important; }
+
+/* ── Section titles ─────────────────────────────────────── */
+.sectionTitle,
+.sectionTitleContainer h2 {
+  font-family: var(--font-display) !important;
+  font-size: clamp(0.62rem, 0.82vw, 1.0rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.28em !important;
+  text-transform: uppercase !important;
+  color: var(--rq-cream) !important;
+}
+
+/* ── Lists / panels ─────────────────────────────────────── */
+.collapseContent,
+.formDialogFooter:not(.formDialogFooter-clear),
+.formDialogHeader:not(.formDialogHeader-clear),
+.paperList,
+.visualCardBox {
+  background-color: var(--rq-deep) !important;
+}
+
+.listItem-border {
+  border-color: var(--rq-border-dim) !important;
+}
+
+.listItem:focus { background: var(--rq-surface) !important; }
+.listItem:hover { background: var(--rq-raised) !important; }
+
+.actionsheetDivider { background: var(--rq-border) !important; }
+
+/* ── Tabs ───────────────────────────────────────────────── */
+.emby-tab-button {
+  color: var(--rq-muted) !important;
+  font-family: var(--font-display) !important;
+  font-size: clamp(0.55rem, 0.65vw, 0.75rem) !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+}
+
+.emby-tab-button-active { color: var(--rq-gold) !important; }
+
+.emby-tab-button.show-focus:focus,
+.emby-tab-button:hover { color: var(--rq-gold-pale) !important; }
+
+/* ── Dialogs ────────────────────────────────────────────── */
+.dialog {
+  background-color: var(--rq-deep) !important;
+  border: 1px solid var(--rq-border) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.95) !important;
+}
+
+/* ── Toast ──────────────────────────────────────────────── */
+.toast {
+  background: var(--rq-raised) !important;
+  color: var(--rq-cream) !important;
+  border: 1px solid var(--rq-border) !important;
+  border-radius: 0 !important;
+  font-family: var(--font-body) !important;
+}
+
+/* ── Footer / now playing ───────────────────────────────── */
+.appfooter, .playlistSectionButton {
+  background: rgba(7,6,5,0.98) !important;
+  color: var(--rq-cream) !important;
+  border-top: 1px solid var(--rq-border) !important;
+}
+
+/* ── Detail page ────────────────────────────────────────── */
+.noBackdropTransparency .detailPagePrimaryContainer,
+.noBackdropTransparency .detailPageSecondaryContainer {
+  background-color: var(--rq-void) !important;
+}
+
+.detailRibbon {
+  background: rgba(12,10,7,0.92) !important;
+  border-bottom: 1px solid var(--rq-border) !important;
+}
+
+.layout-tv .detailRibbon { background: none !important; }
+
+.detailTableBodyRow-shaded:nth-child(2n) {
+  background: var(--rq-surface) !important;
+}
+
+.mediaInfoText {
+  background: rgba(200,164,90,0.08) !important;
+  color: var(--rq-cream) !important;
+  border: 1px solid var(--rq-gold-dim) !important;
+  border-radius: 0 !important;
+  font-family: var(--font-display) !important;
+  font-size: clamp(0.52rem, 0.6vw, 0.7rem) !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+/* ── Backdrop ───────────────────────────────────────────── */
+.backdropImage {
+  filter: brightness(0.2) saturate(0.5) sepia(0.2) !important;
+}
+
+/* ── Login page ─────────────────────────────────────────── */
+#loginPage, .loginPage {
+  background: var(--rq-void) !important;
+}
+
+.loginDisclaimer, .disclaimerContainer {
+  font-family: var(--font-body) !important;
+  font-style: italic !important;
+  color: var(--rq-muted) !important;
+  text-align: center !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* ── Interactive states ─────────────────────────────────── */
+@media (hover:hover) and (pointer:fine) {
+  .paper-icon-button-light:hover:not(:disabled) {
+    background-color: var(--rq-gold-glow) !important;
+    color: var(--rq-gold) !important;
+  }
+}
+
+.paper-icon-button-light:active:not(:disabled) {
+  background-color: var(--rq-gold-glow) !important;
+  color: var(--rq-gold) !important;
+}
+
+.paper-icon-button-light.show-focus:focus { color: var(--rq-gold) !important; }
+.button-flat:hover, .button-link { color: var(--rq-gold) !important; }
+.buttonActive { color: var(--rq-gold) !important; }
+
+/* ── Checkboxes ─────────────────────────────────────────── */
+.checkboxOutline { border-color: currentColor !important; }
+
+.emby-checkbox:checked + span + .checkboxOutline {
+  background-color: var(--rq-gold-dim) !important;
+  border-color: var(--rq-gold-dim) !important;
+}
+
+.emby-checkbox:focus + span + .checkboxOutline { border-color: var(--rq-cream) !important; }
+.emby-checkbox:focus:not(:checked) + span + .checkboxOutline { border-color: var(--rq-gold-dim) !important; }
+
+/* ── Progress ring ──────────────────────────────────────── */
+.progressring-spiner { border-color: var(--rq-gold) !important; }
+
+/* ── Rating / action buttons ────────────────────────────── */
+.ratingbutton-icon-withrating { color: var(--rq-red) !important; }
+.playstatebutton-icon-played { color: var(--rq-gold-dim) !important; }
+.downloadbutton-icon-complete, .downloadbutton-icon-on { color: var(--rq-gold) !important; }
+.metadataSidebarIcon { color: var(--rq-gold) !important; }
+
+.emby-button.detailFloatingButton {
+  background-color: var(--rq-gold-dim) !important;
+  color: var(--rq-void) !important;
+  border-radius: 0 !important;
+}
+
+.emby-button.show-focus:focus {
+  background: var(--rq-gold-glow) !important;
+  color: var(--rq-gold) !important;
+}
+
+.layout-tv .emby-button.detailFloatingButton:focus {
+  background-color: var(--rq-gold-pale) !important;
+  color: var(--rq-void) !important;
+}
+
+/* ── Up next ────────────────────────────────────────────── */
+.upNextDialog-countdownText { color: var(--rq-gold) !important; }
+
+/* ── Alpha picker ───────────────────────────────────────── */
+.alphaPickerButton {
+  background-color: transparent !important;
+  color: var(--rq-muted) !important;
+  font-family: var(--font-display) !important;
+}
+
+.alphaPickerButton-selected { color: var(--rq-gold-pale) !important; }
+
+.layout-tv .alphaPickerButton-tv:focus {
+  background-color: var(--rq-gold-dim) !important;
+  color: var(--rq-void) !important;
+}
+
+/* ── Info banner ────────────────────────────────────────── */
+.infoBanner {
+  background: var(--rq-deep) !important;
+  border: 1px solid var(--rq-border) !important;
+  border-radius: 0 !important;
+  color: var(--rq-cream) !important;
+}
+
+/* ── Selection ──────────────────────────────────────────── */
+.itemSelectionPanel { border: 1px solid var(--rq-gold-dim) !important; }
+.selectionCommandsPanel { background: var(--rq-gold-dim) !important; color: var(--rq-void) !important; }
+
+/* ── Guide / Live TV ────────────────────────────────────── */
+.channelPrograms, .guide-channelHeaderCell, .programCell {
+  border-color: var(--rq-border-dim) !important;
+}
+
+.programCell-sports  { background: #1a1f3a !important; }
+.programCell-movie   { background: #1a0f2e !important; }
+.programCell-kids    { background: #0f1e2e !important; }
+.programCell-news    { background: #0f2214 !important; }
+.programCell-active  { background: var(--rq-surface) !important; }
+
+.guide-channelHeaderCell:focus,
+.programCell:focus {
+  background-color: var(--rq-gold-dim) !important;
+  color: var(--rq-void) !important;
+}
+
+.guide-programTextIcon { background: var(--rq-faint) !important; color: var(--rq-cream) !important; }
+.guide-headerTimeslots { color: inherit !important; }
+.guide-date-tab-button { color: var(--rq-muted) !important; }
+
+.guide-date-tab-button.emby-tab-button-active,
+.guide-date-tab-button:focus { color: var(--rq-gold) !important; }
+
+.guide-date-tab-button.show-focus:focus {
+  background-color: var(--rq-gold-dim) !important;
+  color: var(--rq-void) !important;
+}
+
+/* ── Book / Comics / PDF ────────────────────────────────── */
+#bookPlayer, #comicsPlayer, #pdfPlayer { background: var(--rq-void) !important; }
+#comicsPlayer .swiper-pagination { background: var(--rq-deep) !important; color: var(--rq-cream) !important; }
+#bookPlayer .topButtons,
+#comicsPlayer .actionButtonIcon,
+#pdfPlayer .actionButtonIcon { color: var(--rq-cream) !important; }
+#dialogToc { background-color: var(--rq-deep) !important; }
+#dialogToc .bookplayerButtonIcon { color: var(--rq-muted) !important; }
+#dialogToc .bookplayerButtonIcon:hover { color: var(--rq-gold) !important; }
+#dialogToc .toc li a:link { color: var(--rq-muted) !important; }
+#dialogToc .toc li a:active,
+#dialogToc .toc li a:hover { color: var(--rq-gold) !important; }
+
+/* ── TV layout ──────────────────────────────────────────── */
+.layout-tv .formDialogFooter:not(.formDialogFooter-clear) {
+  background-color: transparent !important;
+}
+
+.layout-tv .emby-select-tv-withcolor:focus {
+  background-color: var(--rq-gold-dim) !important;
+  color: var(--rq-void) !important;
+}
+
+.layout-desktop ::-webkit-scrollbar,
+.layout-tv ::-webkit-scrollbar { height: .4em !important; width: .4em !important; }
+
+/* ── Selection highlight ────────────────────────────────── */
+::selection {
+  background: var(--rq-gold-dim) !important;
+  color: var(--rq-void) !important;
+}
+
+/* ── Page entrance ──────────────────────────────────────── */
+.page {
+  animation: rq-enter 0.4s ease forwards !important;
+}
+
+@keyframes rq-enter {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
