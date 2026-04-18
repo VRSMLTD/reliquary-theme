@@ -296,16 +296,15 @@ html, .backgroundContainer, .dialog,
 .programSecondaryTitle {
   color: var(--rq-muted) !important;
   font-family: var(--font-body) !important;
-  font-size: clamp(0.5rem, 0.58vw, 0.68rem) !important;
+  font-size: clamp(0.65rem, 0.75vw, 0.88rem) !important;
 }
 
-/* Category tile text */
-.overflowBackdropCard .cardText {
-  font-family: var(--font-display) !important;
-  font-size: clamp(0.75rem, 0.95vw, 1.2rem) !important;
-  letter-spacing: 0.22em !important;
-  font-weight: 600 !important;
-  text-shadow: 0 2px 20px rgba(0,0,0,1), 0 0 60px rgba(0,0,0,0.9) !important;
+/* Hide inline text inside category tiles — label below is sufficient */
+.overflowBackdropCard .cardScalable .cardText,
+.overflowBackdropCard .cardImageContainer .cardText,
+.overflowBackdropCard .cardContent .cardText,
+.overflowBackdropCard .cardCenteredText {
+  display: none !important;
 }
 
 /* Progress bar */
