@@ -1,45 +1,38 @@
 /* ============================================================
-   RELIQUARY — A Sacred Archive
-   Jellyfin Theme by iBlankked
+   RELIQUARY — Greyscale Edition
+   Jellyfin Theme
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
 
-/* ── Variables ──────────────────────────────────────────── */
 :root {
-  --rq-void:        #070605;
-  --rq-deep:        #0c0a07;
-  --rq-surface:     #121008;
-  --rq-raised:      #1a160e;
-  --rq-border:      #2a2116;
-  --rq-border-dim:  #1c1810;
-  --rq-gold:        #c8a45a;
-  --rq-gold-dim:    #7a612e;
-  --rq-gold-pale:   #e8d5a0;
-  --rq-gold-glow:   rgba(200,164,90,0.08);
-  --rq-gold-rgb:    200,164,90;
-  --rq-cream:       #e0d2ba;
-  --rq-muted:       #6e6450;
-  --rq-faint:       #2e2818;
-  --rq-red:         #6b1515;
-  --accent:         200,164,90;
-  --rounding:       0px;
-  --font-display:   'Cinzel', 'Times New Roman', serif;
-  --font-body:      'Cormorant Garamond', 'Georgia', serif;
-  --font-read:      'EB Garamond', 'Georgia', serif;
+  --rq-void:       #080808;
+  --rq-deep:       #101010;
+  --rq-surface:    #181818;
+  --rq-raised:     #202020;
+  --rq-border:     #2a2a2a;
+  --rq-border-dim: #1a1a1a;
+  --rq-accent:     #c8c8c8;
+  --rq-accent-dim: #666666;
+  --rq-cream:      #e8e8e8;
+  --rq-muted:      #888888;
+  --rq-faint:      #333333;
+  --font-display:  'Cinzel', 'Times New Roman', serif;
+  --font-body:     'Cormorant Garamond', 'Georgia', serif;
+  --font-read:     'EB Garamond', 'Georgia', serif;
 }
 
 /* ── Scrollbars ─────────────────────────────────────────── */
 * {
-  scrollbar-color: var(--rq-gold-dim) var(--rq-deep) !important;
+  scrollbar-color: var(--rq-accent-dim) var(--rq-deep) !important;
   scrollbar-width: thin !important;
 }
 ::-webkit-scrollbar { width: 4px !important; height: 4px !important; }
-::-webkit-scrollbar-track { background: var(--rq-deep) !important; box-shadow: none !important; }
+::-webkit-scrollbar-track { background: var(--rq-deep) !important; }
 ::-webkit-scrollbar-track-piece { background-color: var(--rq-deep) !important; }
 ::-webkit-scrollbar-thumb:horizontal,
 ::-webkit-scrollbar-thumb:vertical {
-  background: var(--rq-gold-dim) !important;
+  background: var(--rq-accent-dim) !important;
   border-radius: 0 !important;
 }
 
@@ -57,35 +50,25 @@ html, .backgroundContainer, .dialog,
 }
 
 .backgroundContainer.withBackdrop {
-  background-color: rgba(7,6,5,0.94) !important;
+  background-color: rgba(8,8,8,0.94) !important;
 }
 
 .ui-corner-all, .ui-shadow, .wizardStartForm {
   background-color: var(--rq-deep) !important;
 }
 
-/* ── Vignette atmosphere ────────────────────────────────── */
-.backgroundContainer::before {
-  content: '' !important;
-  position: fixed !important;
-  inset: 0 !important;
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%) !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
-}
-
 /* ── Header ─────────────────────────────────────────────── */
 .skinHeader, html { color: var(--rq-cream) !important; }
 
 .skinHeader-withBackground {
-  background-color: rgba(7,6,5,0.97) !important;
+  background-color: rgba(8,8,8,0.97) !important;
   border-bottom: 1px solid var(--rq-border) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
 }
 
 .skinHeader.semiTransparent {
-  background-color: rgba(7,6,5,0.6) !important;
+  background-color: rgba(8,8,8,0.6) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
 }
@@ -94,20 +77,18 @@ html, .backgroundContainer, .dialog,
 
 .pageTitleWithDefaultLogo {
   background-image: url(../../banner-light.b113d4d1c6c07fcb73f0.png) !important;
-  filter: sepia(1) saturate(0.4) brightness(0.75) !important;
+  filter: grayscale(1) brightness(0.7) !important;
 }
 
 .layout-tv .pageTitleWithDefaultLogo {
   background-image: url(../../icon-transparent.baba78f2a106d9baee83.png) !important;
 }
 
-/* Header nav buttons */
 .headerButton {
   color: var(--rq-muted) !important;
   transition: color 0.3s ease !important;
 }
-
-.headerButton:hover { color: var(--rq-gold) !important; }
+.headerButton:hover { color: var(--rq-cream) !important; }
 
 /* ── Sidebar ────────────────────────────────────────────── */
 .drawer-open, .mainDrawer {
@@ -121,18 +102,18 @@ html, .backgroundContainer, .dialog,
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
   color: var(--rq-muted) !important;
-  transition: color 0.25s ease, padding-left 0.25s ease !important;
+  transition: color 0.25s ease !important;
 }
 
 .navMenuOption:hover {
-  background: rgba(200,164,90,0.05) !important;
-  color: var(--rq-gold) !important;
+  background: rgba(200,200,200,0.05) !important;
+  color: var(--rq-cream) !important;
 }
 
 .navMenuOption-selected {
   background: transparent !important;
-  color: var(--rq-gold) !important;
-  border-left: 2px solid var(--rq-gold) !important;
+  color: var(--rq-cream) !important;
+  border-left: 2px solid var(--rq-accent) !important;
 }
 
 /* ── Buttons ────────────────────────────────────────────── */
@@ -149,29 +130,24 @@ html, .backgroundContainer, .dialog,
 }
 
 .fab:focus, .raised:focus {
-  background: var(--rq-gold-glow) !important;
-  border-color: var(--rq-gold-dim) !important;
+  background: rgba(200,200,200,0.08) !important;
+  border-color: var(--rq-accent-dim) !important;
 }
 
 .button-submit {
   background: transparent !important;
-  color: var(--rq-gold) !important;
-  border: 1px solid var(--rq-gold-dim) !important;
+  color: var(--rq-cream) !important;
+  border: 1px solid var(--rq-accent-dim) !important;
   font-family: var(--font-display) !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
   border-radius: 0 !important;
 }
 
-.button-submit:focus {
-  background: var(--rq-gold-glow) !important;
-  color: var(--rq-gold-pale) !important;
-}
-
 .button-delete {
   background: transparent !important;
-  color: #cb272a !important;
-  border: 1px solid var(--rq-red) !important;
+  color: #888 !important;
+  border: 1px solid #444 !important;
   border-radius: 0 !important;
 }
 
@@ -186,7 +162,7 @@ html, .backgroundContainer, .dialog,
 }
 
 .emby-input:focus, .emby-textarea:focus {
-  border-color: var(--rq-gold-dim) !important;
+  border-color: var(--rq-accent-dim) !important;
 }
 
 .emby-select-withcolor {
@@ -202,10 +178,9 @@ html, .backgroundContainer, .dialog,
 }
 
 .emby-select-withcolor:focus {
-  border-color: var(--rq-gold-dim) !important;
+  border-color: var(--rq-accent-dim) !important;
 }
 
-/* Labels */
 .inputLabel, .inputLabelUnfocused, .checkboxListLabel,
 .paperListLabel, .textareaLabelUnfocused {
   color: var(--rq-muted) !important;
@@ -216,17 +191,17 @@ html, .backgroundContainer, .dialog,
 }
 
 .inputLabelFocused, .selectLabelFocused, .textareaLabelFocused {
-  color: var(--rq-gold) !important;
+  color: var(--rq-accent) !important;
 }
 
 .checkboxLabel { color: inherit !important; }
 
 /* ── Cards ──────────────────────────────────────────────── */
-.defaultCardBackground1 { background-color: #1a1208 !important; }
-.defaultCardBackground2 { background-color: #231a0a !important; }
-.defaultCardBackground3 { background-color: #1c1508 !important; }
-.defaultCardBackground4 { background-color: #141008 !important; }
-.defaultCardBackground5 { background-color: #201808 !important; }
+.defaultCardBackground1 { background-color: #141414 !important; }
+.defaultCardBackground2 { background-color: #1a1a1a !important; }
+.defaultCardBackground3 { background-color: #111111 !important; }
+.defaultCardBackground4 { background-color: #0e0e0e !important; }
+.defaultCardBackground5 { background-color: #181818 !important; }
 
 .card { border-radius: 0 !important; }
 
@@ -237,31 +212,31 @@ html, .backgroundContainer, .dialog,
 
 .card:focus .cardBox.visualCardBox,
 .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-  border-color: var(--rq-gold-dim) !important;
+  border-color: var(--rq-accent-dim) !important;
 }
 
 .card:hover .cardBox {
-  box-shadow: 0 0 0 1px var(--rq-gold-dim), 0 12px 50px rgba(0,0,0,0.85) !important;
+  box-shadow: 0 0 0 1px var(--rq-accent-dim), 0 12px 50px rgba(0,0,0,0.85) !important;
 }
 
-/* Sepia → color on hover */
+/* B&W → full color on hover */
 .cardImageContainer {
   border-radius: 0 !important;
   overflow: hidden !important;
-  filter: sepia(0.65) brightness(0.88) !important;
+  filter: grayscale(1) brightness(0.85) !important;
   transition: filter 0.5s ease !important;
 }
 
 .card:hover .cardImageContainer {
-  filter: sepia(0) brightness(1.0) !important;
+  filter: grayscale(0) brightness(1.0) !important;
 }
 
-/* Card overlay gradient */
+/* Card overlay */
 .cardOverlay {
   background: linear-gradient(
     0deg,
-    rgba(7,6,5,0.92) 0%,
-    rgba(7,6,5,0.3) 45%,
+    rgba(8,8,8,0.92) 0%,
+    rgba(8,8,8,0.3) 45%,
     transparent 72%
   ) !important;
   transition: background 0.4s ease !important;
@@ -270,8 +245,8 @@ html, .backgroundContainer, .dialog,
 .card:hover .cardOverlay {
   background: linear-gradient(
     0deg,
-    rgba(7,6,5,0.65) 0%,
-    rgba(7,6,5,0.08) 45%,
+    rgba(8,8,8,0.65) 0%,
+    rgba(8,8,8,0.08) 45%,
     transparent 72%
   ) !important;
 }
@@ -299,14 +274,6 @@ html, .backgroundContainer, .dialog,
   font-size: clamp(0.65rem, 0.75vw, 0.88rem) !important;
 }
 
-/* Hide inline text inside category tiles — label below is sufficient */
-.overflowBackdropCard .cardScalable .cardText,
-.overflowBackdropCard .cardImageContainer .cardText,
-.overflowBackdropCard .cardContent .cardText,
-.overflowBackdropCard .cardCenteredText {
-  display: none !important;
-}
-
 /* Progress bar */
 .itemProgressBar {
   background: var(--rq-border) !important;
@@ -315,19 +282,17 @@ html, .backgroundContainer, .dialog,
 }
 
 .itemProgressBarForeground {
-  background-color: var(--rq-gold) !important;
+  background-color: var(--rq-accent) !important;
   border-radius: 0 !important;
 }
 
-/* Played/watched indicator */
+/* Watched indicator */
 .countIndicator, .fullSyncIndicator,
 .mediaSourceIndicator, .playedIndicator {
-  background: var(--rq-gold-dim) !important;
+  background: var(--rq-accent-dim) !important;
   border-radius: 0 !important;
   color: var(--rq-void) !important;
 }
-
-.fullSyncIndicator { color: var(--rq-void) !important; }
 
 /* ── Section titles ─────────────────────────────────────── */
 .sectionTitle,
@@ -340,7 +305,7 @@ html, .backgroundContainer, .dialog,
   color: var(--rq-cream) !important;
 }
 
-/* ── Lists / panels ─────────────────────────────────────── */
+/* ── Lists ──────────────────────────────────────────────── */
 .collapseContent,
 .formDialogFooter:not(.formDialogFooter-clear),
 .formDialogHeader:not(.formDialogHeader-clear),
@@ -349,13 +314,9 @@ html, .backgroundContainer, .dialog,
   background-color: var(--rq-deep) !important;
 }
 
-.listItem-border {
-  border-color: var(--rq-border-dim) !important;
-}
-
+.listItem-border { border-color: var(--rq-border-dim) !important; }
 .listItem:focus { background: var(--rq-surface) !important; }
 .listItem:hover { background: var(--rq-raised) !important; }
-
 .actionsheetDivider { background: var(--rq-border) !important; }
 
 /* ── Tabs ───────────────────────────────────────────────── */
@@ -367,10 +328,9 @@ html, .backgroundContainer, .dialog,
   text-transform: uppercase !important;
 }
 
-.emby-tab-button-active { color: var(--rq-gold) !important; }
-
+.emby-tab-button-active { color: var(--rq-cream) !important; }
 .emby-tab-button.show-focus:focus,
-.emby-tab-button:hover { color: var(--rq-gold-pale) !important; }
+.emby-tab-button:hover { color: var(--rq-accent) !important; }
 
 /* ── Dialogs ────────────────────────────────────────────── */
 .dialog {
@@ -389,9 +349,9 @@ html, .backgroundContainer, .dialog,
   font-family: var(--font-body) !important;
 }
 
-/* ── Footer / now playing ───────────────────────────────── */
+/* ── Footer ─────────────────────────────────────────────── */
 .appfooter, .playlistSectionButton {
-  background: rgba(7,6,5,0.98) !important;
+  background: rgba(8,8,8,0.98) !important;
   color: var(--rq-cream) !important;
   border-top: 1px solid var(--rq-border) !important;
 }
@@ -403,7 +363,7 @@ html, .backgroundContainer, .dialog,
 }
 
 .detailRibbon {
-  background: rgba(12,10,7,0.92) !important;
+  background: rgba(8,8,8,0.92) !important;
   border-bottom: 1px solid var(--rq-border) !important;
 }
 
@@ -414,9 +374,9 @@ html, .backgroundContainer, .dialog,
 }
 
 .mediaInfoText {
-  background: rgba(200,164,90,0.08) !important;
+  background: rgba(200,200,200,0.06) !important;
   color: var(--rq-cream) !important;
-  border: 1px solid var(--rq-gold-dim) !important;
+  border: 1px solid var(--rq-border) !important;
   border-radius: 0 !important;
   font-family: var(--font-display) !important;
   font-size: clamp(0.52rem, 0.6vw, 0.7rem) !important;
@@ -426,7 +386,7 @@ html, .backgroundContainer, .dialog,
 
 /* ── Backdrop ───────────────────────────────────────────── */
 .backdropImage {
-  filter: brightness(0.2) saturate(0.5) sepia(0.2) !important;
+  filter: grayscale(1) brightness(0.2) !important;
 }
 
 /* ── Login page ─────────────────────────────────────────── */
@@ -439,64 +399,58 @@ html, .backgroundContainer, .dialog,
   font-style: italic !important;
   color: var(--rq-muted) !important;
   text-align: center !important;
-  letter-spacing: 0.04em !important;
 }
 
 /* ── Interactive states ─────────────────────────────────── */
 @media (hover:hover) and (pointer:fine) {
   .paper-icon-button-light:hover:not(:disabled) {
-    background-color: var(--rq-gold-glow) !important;
-    color: var(--rq-gold) !important;
+    background-color: rgba(200,200,200,0.08) !important;
+    color: var(--rq-cream) !important;
   }
 }
 
 .paper-icon-button-light:active:not(:disabled) {
-  background-color: var(--rq-gold-glow) !important;
-  color: var(--rq-gold) !important;
+  background-color: rgba(200,200,200,0.08) !important;
+  color: var(--rq-cream) !important;
 }
 
-.paper-icon-button-light.show-focus:focus { color: var(--rq-gold) !important; }
-.button-flat:hover, .button-link { color: var(--rq-gold) !important; }
-.buttonActive { color: var(--rq-gold) !important; }
+.paper-icon-button-light.show-focus:focus { color: var(--rq-cream) !important; }
+.button-flat:hover, .button-link { color: var(--rq-accent) !important; }
+.buttonActive { color: var(--rq-accent) !important; }
 
 /* ── Checkboxes ─────────────────────────────────────────── */
 .checkboxOutline { border-color: currentColor !important; }
 
 .emby-checkbox:checked + span + .checkboxOutline {
-  background-color: var(--rq-gold-dim) !important;
-  border-color: var(--rq-gold-dim) !important;
+  background-color: var(--rq-accent-dim) !important;
+  border-color: var(--rq-accent-dim) !important;
 }
 
 .emby-checkbox:focus + span + .checkboxOutline { border-color: var(--rq-cream) !important; }
-.emby-checkbox:focus:not(:checked) + span + .checkboxOutline { border-color: var(--rq-gold-dim) !important; }
+.emby-checkbox:focus:not(:checked) + span + .checkboxOutline { border-color: var(--rq-accent-dim) !important; }
 
 /* ── Progress ring ──────────────────────────────────────── */
-.progressring-spiner { border-color: var(--rq-gold) !important; }
+.progressring-spiner { border-color: var(--rq-accent) !important; }
 
-/* ── Rating / action buttons ────────────────────────────── */
-.ratingbutton-icon-withrating { color: var(--rq-red) !important; }
-.playstatebutton-icon-played { color: var(--rq-gold-dim) !important; }
-.downloadbutton-icon-complete, .downloadbutton-icon-on { color: var(--rq-gold) !important; }
-.metadataSidebarIcon { color: var(--rq-gold) !important; }
+/* ── Action buttons ─────────────────────────────────────── */
+.ratingbutton-icon-withrating { color: #666 !important; }
+.playstatebutton-icon-played { color: var(--rq-accent-dim) !important; }
+.downloadbutton-icon-complete, .downloadbutton-icon-on { color: var(--rq-accent) !important; }
+.metadataSidebarIcon { color: var(--rq-accent) !important; }
 
 .emby-button.detailFloatingButton {
-  background-color: var(--rq-gold-dim) !important;
+  background-color: var(--rq-accent-dim) !important;
   color: var(--rq-void) !important;
   border-radius: 0 !important;
 }
 
 .emby-button.show-focus:focus {
-  background: var(--rq-gold-glow) !important;
-  color: var(--rq-gold) !important;
-}
-
-.layout-tv .emby-button.detailFloatingButton:focus {
-  background-color: var(--rq-gold-pale) !important;
-  color: var(--rq-void) !important;
+  background: rgba(200,200,200,0.08) !important;
+  color: var(--rq-cream) !important;
 }
 
 /* ── Up next ────────────────────────────────────────────── */
-.upNextDialog-countdownText { color: var(--rq-gold) !important; }
+.upNextDialog-countdownText { color: var(--rq-accent) !important; }
 
 /* ── Alpha picker ───────────────────────────────────────── */
 .alphaPickerButton {
@@ -505,12 +459,7 @@ html, .backgroundContainer, .dialog,
   font-family: var(--font-display) !important;
 }
 
-.alphaPickerButton-selected { color: var(--rq-gold-pale) !important; }
-
-.layout-tv .alphaPickerButton-tv:focus {
-  background-color: var(--rq-gold-dim) !important;
-  color: var(--rq-void) !important;
-}
+.alphaPickerButton-selected { color: var(--rq-cream) !important; }
 
 /* ── Info banner ────────────────────────────────────────── */
 .infoBanner {
@@ -521,37 +470,31 @@ html, .backgroundContainer, .dialog,
 }
 
 /* ── Selection ──────────────────────────────────────────── */
-.itemSelectionPanel { border: 1px solid var(--rq-gold-dim) !important; }
-.selectionCommandsPanel { background: var(--rq-gold-dim) !important; color: var(--rq-void) !important; }
+.itemSelectionPanel { border: 1px solid var(--rq-accent-dim) !important; }
+.selectionCommandsPanel { background: var(--rq-accent-dim) !important; color: var(--rq-void) !important; }
 
 /* ── Guide / Live TV ────────────────────────────────────── */
 .channelPrograms, .guide-channelHeaderCell, .programCell {
   border-color: var(--rq-border-dim) !important;
 }
 
-.programCell-sports  { background: #1a1f3a !important; }
-.programCell-movie   { background: #1a0f2e !important; }
-.programCell-kids    { background: #0f1e2e !important; }
-.programCell-news    { background: #0f2214 !important; }
+.programCell-sports  { background: #1a1a1a !important; }
+.programCell-movie   { background: #141414 !important; }
+.programCell-kids    { background: #111111 !important; }
+.programCell-news    { background: #181818 !important; }
 .programCell-active  { background: var(--rq-surface) !important; }
 
 .guide-channelHeaderCell:focus,
 .programCell:focus {
-  background-color: var(--rq-gold-dim) !important;
+  background-color: var(--rq-accent-dim) !important;
   color: var(--rq-void) !important;
 }
 
 .guide-programTextIcon { background: var(--rq-faint) !important; color: var(--rq-cream) !important; }
 .guide-headerTimeslots { color: inherit !important; }
 .guide-date-tab-button { color: var(--rq-muted) !important; }
-
 .guide-date-tab-button.emby-tab-button-active,
-.guide-date-tab-button:focus { color: var(--rq-gold) !important; }
-
-.guide-date-tab-button.show-focus:focus {
-  background-color: var(--rq-gold-dim) !important;
-  color: var(--rq-void) !important;
-}
+.guide-date-tab-button:focus { color: var(--rq-accent) !important; }
 
 /* ── Book / Comics / PDF ────────────────────────────────── */
 #bookPlayer, #comicsPlayer, #pdfPlayer { background: var(--rq-void) !important; }
@@ -561,27 +504,25 @@ html, .backgroundContainer, .dialog,
 #pdfPlayer .actionButtonIcon { color: var(--rq-cream) !important; }
 #dialogToc { background-color: var(--rq-deep) !important; }
 #dialogToc .bookplayerButtonIcon { color: var(--rq-muted) !important; }
-#dialogToc .bookplayerButtonIcon:hover { color: var(--rq-gold) !important; }
+#dialogToc .bookplayerButtonIcon:hover { color: var(--rq-cream) !important; }
 #dialogToc .toc li a:link { color: var(--rq-muted) !important; }
 #dialogToc .toc li a:active,
-#dialogToc .toc li a:hover { color: var(--rq-gold) !important; }
+#dialogToc .toc li a:hover { color: var(--rq-cream) !important; }
 
 /* ── TV layout ──────────────────────────────────────────── */
 .layout-tv .formDialogFooter:not(.formDialogFooter-clear) {
   background-color: transparent !important;
 }
-
 .layout-tv .emby-select-tv-withcolor:focus {
-  background-color: var(--rq-gold-dim) !important;
+  background-color: var(--rq-accent-dim) !important;
   color: var(--rq-void) !important;
 }
-
 .layout-desktop ::-webkit-scrollbar,
 .layout-tv ::-webkit-scrollbar { height: .4em !important; width: .4em !important; }
 
 /* ── Selection highlight ────────────────────────────────── */
 ::selection {
-  background: var(--rq-gold-dim) !important;
+  background: var(--rq-accent-dim) !important;
   color: var(--rq-void) !important;
 }
 
